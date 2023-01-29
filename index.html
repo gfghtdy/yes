@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Download YouTube Video</title>
+  </head>
+  <body>
+    <div>
+      <input type="text" id="video-url" placeholder="Enter YouTube video URL (with ro before youtube)" />
+      <button onclick="downloadVideo()">Download</button>
+    </div>
+    <script>
+      // Get the video ID from the current URL
+      var videoId = window.location.href.split("=")[1];
+      
+      // Construct the modified URL
+      var modifiedUrl = "ro" + window.location.href;
+      
+      // populate the input field with the modified URL
+      document.getElementById("video-url").value = modifiedUrl;
+      
+      function downloadVideo() {
+        // Get the video URL from the input field
+        var videoUrl = document.getElementById("video-url").value;
+        
+        // Create a new anchor element with the download attribute
+        var downloadLink = document.createElement("a");
+        downloadLink.download = "video.mp4";
+        downloadLink.href = videoUrl;
+        
+        // Trigger the download
+        downloadLink.click();
+      }
+    </script>
+  </body>
+</html>
